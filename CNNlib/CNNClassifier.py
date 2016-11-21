@@ -1,3 +1,6 @@
+import h5py
+import matplotlib
+matplotlib.use('Agg')
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -123,3 +126,6 @@ plt.xlabel('Signal window number')
 plt.show()
 plt.savefig('ClassifierOut.png')
 print 'True positive rate', true_positive_rate, 'True negative rate', true_negative_rate
+model_name = 'my_model.h5'
+model.save(model_name) # Save the model (see documentation model.save())
+print 'Model saved as', model_name
