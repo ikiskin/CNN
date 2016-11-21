@@ -1,6 +1,8 @@
 #from __future__ import print_function
 import sys
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from scipy.io.wavfile import read, write
@@ -108,13 +110,13 @@ def normalise(data, wrt_data):
 
 ################################## Code Execution #############################################################
 
-path_training = ['../../../../Resources/KIBA/BirdCLEF/training/wav/colibri/',
-                 '../../../../Resources/KIBA/BirdCLEF/training/wav/other/']
+path_training = ['../../../data/BirdCLEF/training/wav/colibri/',
+                 '../../../data/BirdCLEF/training/wav/other/']
 
 x_train, y_train, y_positive_frac, input_shape, window_count_train =  proc_data(path_training, 256, 256, normalise = False)   
 
-path_testing = ['../../../../Resources/KIBA/BirdCLEF/testing/wav/colibri/',
-                 '../../../../Resources/KIBA/BirdCLEF/testing/wav/other/']
+path_testing = ['../../../data/BirdCLEF/testing/wav/colibri/',
+                 '../../../data/BirdCLEF/testing/wav/other/']
 x_test, y_test, y_positive_frac_test, input_shape, window_count = proc_data(path_testing, 256, 256, normalise = False)
 
 x_train_norm, x_train_var = normalise(x_train, x_train)
@@ -122,4 +124,4 @@ x_test_norm, x_train_test_var = normalise(x_test, x_train)
 
 ###############################################################################################################
 
-np.savez('CNNdata.npz', x_train_norm, x_test, x_test_norm, y_train, y_test, input_shape, window_count)
+np.savez('CNNdatanorm.npz', x_train_norm, x_test, x_test_norm, y_train, y_test, input_shape, window_count)

@@ -13,7 +13,7 @@ K.set_image_dim_ordering('th')
 
 
 ##################################################################
-dataset = np.load('CNNdata.npz')
+dataset = np.load('CNNdatanorm.npz')
 
 x_train = dataset["arr_0"]
 x_test_norm = dataset["arr_1"]  # Normalised version of x_test
@@ -67,7 +67,7 @@ model.compile(loss='categorical_crossentropy',
 # Train model
 
 batch_size = 16
-nb_epoch = 5
+nb_epoch = 1
 
 # For practice code run
 # model.fit(X_train_set, Y_train, batch_size=batch_size, nb_epoch=nb_epoch,
